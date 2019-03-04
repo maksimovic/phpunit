@@ -9,9 +9,6 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-use PHPUnit\Framework\Assert;
-use PHPUnit\Framework\ExpectationFailedException;
-
 final class Attribute extends Composite
 {
     /**
@@ -24,33 +21,6 @@ final class Attribute extends Composite
         parent::__construct($constraint);
 
         $this->attributeName = $attributeName;
-    }
-
-    /**
-     * Evaluates the constraint for parameter $other
-     *
-     * If $returnResult is set to false (the default), an exception is thrown
-     * in case of a failure. null is returned otherwise.
-     *
-     * If $returnResult is true, the result of the evaluation is returned as
-     * a boolean value instead: true in case of success, false in case of a
-     * failure.
-     *
-     * @throws ExpectationFailedException
-     * @throws \PHPUnit\Framework\Exception
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-     * @throws \ReflectionException
-     */
-    public function evaluate($other, string $description = '', bool $returnResult = false)
-    {
-        return parent::evaluate(
-            Assert::readAttribute(
-                $other,
-                $this->attributeName
-            ),
-            $description,
-            $returnResult
-        );
     }
 
     /**

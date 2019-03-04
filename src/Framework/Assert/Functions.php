@@ -113,23 +113,9 @@ function assertArrayNotHasKey($key, $array, string $message = ''): void
  * @throws ExpectationFailedException
  * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
  */
-function assertContains($needle, $haystack, string $message = '', bool $ignoreCase = false, bool $checkForObjectIdentity = true, bool $checkForNonObjectIdentity = false): void
+function assertContains($needle, $haystack, string $message = ''): void
 {
     Assert::assertContains(...\func_get_args());
-}
-
-/**
- * Asserts that a haystack that is stored in a static attribute of a class
- * or an attribute of an object contains a needle.
- *
- * @param object|string $haystackClassOrObject
- *
- * @throws ExpectationFailedException
- * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
- */
-function assertAttributeContains($needle, string $haystackAttributeName, $haystackClassOrObject, string $message = '', bool $ignoreCase = false, bool $checkForObjectIdentity = true, bool $checkForNonObjectIdentity = false): void
-{
-    Assert::assertAttributeContains(...\func_get_args());
 }
 
 /**
@@ -138,23 +124,9 @@ function assertAttributeContains($needle, string $haystackAttributeName, $haysta
  * @throws ExpectationFailedException
  * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
  */
-function assertNotContains($needle, $haystack, string $message = '', bool $ignoreCase = false, bool $checkForObjectIdentity = true, bool $checkForNonObjectIdentity = false): void
+function assertNotContains($needle, $haystack, string $message = ''): void
 {
     Assert::assertNotContains(...\func_get_args());
-}
-
-/**
- * Asserts that a haystack that is stored in a static attribute of a class
- * or an attribute of an object does not contain a needle.
- *
- * @param object|string $haystackClassOrObject
- *
- * @throws ExpectationFailedException
- * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
- */
-function assertAttributeNotContains($needle, string $haystackAttributeName, $haystackClassOrObject, string $message = '', bool $ignoreCase = false, bool $checkForObjectIdentity = true, bool $checkForNonObjectIdentity = false): void
-{
-    Assert::assertAttributeNotContains(...\func_get_args());
 }
 
 /**
@@ -180,21 +152,6 @@ function assertContainsOnlyInstancesOf(string $className, iterable $haystack, st
 }
 
 /**
- * Asserts that a haystack that is stored in a static attribute of a class
- * or an attribute of an object contains only values of a given type.
- *
- * @param object|string $haystackClassOrObject
- * @param bool          $isNativeType
- *
- * @throws ExpectationFailedException
- * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
- */
-function assertAttributeContainsOnly(string $type, string $haystackAttributeName, $haystackClassOrObject, ?bool $isNativeType = null, string $message = ''): void
-{
-    Assert::assertAttributeContainsOnly(...\func_get_args());
-}
-
-/**
  * Asserts that a haystack does not contain only values of a given type.
  *
  * @throws ExpectationFailedException
@@ -203,22 +160,6 @@ function assertAttributeContainsOnly(string $type, string $haystackAttributeName
 function assertNotContainsOnly(string $type, iterable $haystack, ?bool $isNativeType = null, string $message = ''): void
 {
     Assert::assertNotContainsOnly(...\func_get_args());
-}
-
-/**
- * Asserts that a haystack that is stored in a static attribute of a class
- * or an attribute of an object does not contain only values of a given
- * type.
- *
- * @param object|string $haystackClassOrObject
- * @param bool          $isNativeType
- *
- * @throws ExpectationFailedException
- * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
- */
-function assertAttributeNotContainsOnly(string $type, string $haystackAttributeName, $haystackClassOrObject, ?bool $isNativeType = null, string $message = ''): void
-{
-    Assert::assertAttributeNotContainsOnly(...\func_get_args());
 }
 
 /**
@@ -235,20 +176,6 @@ function assertCount(int $expectedCount, $haystack, string $message = ''): void
 }
 
 /**
- * Asserts the number of elements of an array, Countable or Traversable
- * that is stored in an attribute.
- *
- * @param object|string $haystackClassOrObject
- *
- * @throws ExpectationFailedException
- * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
- */
-function assertAttributeCount(int $expectedCount, string $haystackAttributeName, $haystackClassOrObject, string $message = ''): void
-{
-    Assert::assertAttributeCount(...\func_get_args());
-}
-
-/**
  * Asserts the number of elements of an array, Countable or Traversable.
  *
  * @param Countable|iterable $haystack
@@ -262,20 +189,6 @@ function assertNotCount(int $expectedCount, $haystack, string $message = ''): vo
 }
 
 /**
- * Asserts the number of elements of an array, Countable or Traversable
- * that is stored in an attribute.
- *
- * @param object|string $haystackClassOrObject
- *
- * @throws ExpectationFailedException
- * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
- */
-function assertAttributeNotCount(int $expectedCount, string $haystackAttributeName, $haystackClassOrObject, string $message = ''): void
-{
-    Assert::assertAttributeNotCount(...\func_get_args());
-}
-
-/**
  * Asserts that two variables are equal.
  *
  * @throws ExpectationFailedException
@@ -284,19 +197,6 @@ function assertAttributeNotCount(int $expectedCount, string $haystackAttributeNa
 function assertEquals($expected, $actual, string $message = '', float $delta = 0.0, int $maxDepth = 10, bool $canonicalize = false, bool $ignoreCase = false): void
 {
     Assert::assertEquals(...\func_get_args());
-}
-
-/**
- * Asserts that a variable is equal to an attribute of an object.
- *
- * @param object|string $actualClassOrObject
- *
- * @throws ExpectationFailedException
- * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
- */
-function assertAttributeEquals($expected, string $actualAttributeName, $actualClassOrObject, string $message = '', float $delta = 0.0, int $maxDepth = 10, bool $canonicalize = false, bool $ignoreCase = false): void
-{
-    Assert::assertAttributeEquals(...\func_get_args());
 }
 
 /**
@@ -316,19 +216,6 @@ function assertNotEquals($expected, $actual, string $message = '', $delta = 0.0,
 }
 
 /**
- * Asserts that a variable is not equal to an attribute of an object.
- *
- * @param object|string $actualClassOrObject
- *
- * @throws ExpectationFailedException
- * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
- */
-function assertAttributeNotEquals($expected, string $actualAttributeName, $actualClassOrObject, string $message = '', float $delta = 0.0, int $maxDepth = 10, bool $canonicalize = false, bool $ignoreCase = false): void
-{
-    Assert::assertAttributeNotEquals(...\func_get_args());
-}
-
-/**
  * Asserts that a variable is empty.
  *
  * @throws ExpectationFailedException
@@ -337,20 +224,6 @@ function assertAttributeNotEquals($expected, string $actualAttributeName, $actua
 function assertEmpty($actual, string $message = ''): void
 {
     Assert::assertEmpty(...\func_get_args());
-}
-
-/**
- * Asserts that a static attribute of a class or an attribute of an object
- * is empty.
- *
- * @param object|string $haystackClassOrObject
- *
- * @throws ExpectationFailedException
- * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
- */
-function assertAttributeEmpty(string $haystackAttributeName, $haystackClassOrObject, string $message = ''): void
-{
-    Assert::assertAttributeEmpty(...\func_get_args());
 }
 
 /**
@@ -365,20 +238,6 @@ function assertNotEmpty($actual, string $message = ''): void
 }
 
 /**
- * Asserts that a static attribute of a class or an attribute of an object
- * is not empty.
- *
- * @param object|string $haystackClassOrObject
- *
- * @throws ExpectationFailedException
- * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
- */
-function assertAttributeNotEmpty(string $haystackAttributeName, $haystackClassOrObject, string $message = ''): void
-{
-    Assert::assertAttributeNotEmpty(...\func_get_args());
-}
-
-/**
  * Asserts that a value is greater than another value.
  *
  * @throws ExpectationFailedException
@@ -387,19 +246,6 @@ function assertAttributeNotEmpty(string $haystackAttributeName, $haystackClassOr
 function assertGreaterThan($expected, $actual, string $message = ''): void
 {
     Assert::assertGreaterThan(...\func_get_args());
-}
-
-/**
- * Asserts that an attribute is greater than another value.
- *
- * @param object|string $actualClassOrObject
- *
- * @throws ExpectationFailedException
- * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
- */
-function assertAttributeGreaterThan($expected, string $actualAttributeName, $actualClassOrObject, string $message = ''): void
-{
-    Assert::assertAttributeGreaterThan(...\func_get_args());
 }
 
 /**
@@ -414,19 +260,6 @@ function assertGreaterThanOrEqual($expected, $actual, string $message = ''): voi
 }
 
 /**
- * Asserts that an attribute is greater than or equal to another value.
- *
- * @param object|string $actualClassOrObject
- *
- * @throws ExpectationFailedException
- * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
- */
-function assertAttributeGreaterThanOrEqual($expected, string $actualAttributeName, $actualClassOrObject, string $message = ''): void
-{
-    Assert::assertAttributeGreaterThanOrEqual(...\func_get_args());
-}
-
-/**
  * Asserts that a value is smaller than another value.
  *
  * @throws ExpectationFailedException
@@ -438,19 +271,6 @@ function assertLessThan($expected, $actual, string $message = ''): void
 }
 
 /**
- * Asserts that an attribute is smaller than another value.
- *
- * @param object|string $actualClassOrObject
- *
- * @throws ExpectationFailedException
- * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
- */
-function assertAttributeLessThan($expected, string $actualAttributeName, $actualClassOrObject, string $message = ''): void
-{
-    Assert::assertAttributeLessThan(...\func_get_args());
-}
-
-/**
  * Asserts that a value is smaller than or equal to another value.
  *
  * @throws ExpectationFailedException
@@ -459,19 +279,6 @@ function assertAttributeLessThan($expected, string $actualAttributeName, $actual
 function assertLessThanOrEqual($expected, $actual, string $message = ''): void
 {
     Assert::assertLessThanOrEqual(...\func_get_args());
-}
-
-/**
- * Asserts that an attribute is smaller than or equal to another value.
- *
- * @param object|string $actualClassOrObject
- *
- * @throws ExpectationFailedException
- * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
- */
-function assertAttributeLessThanOrEqual($expected, string $actualAttributeName, $actualClassOrObject, string $message = ''): void
-{
-    Assert::assertAttributeLessThanOrEqual(...\func_get_args());
 }
 
 /**
@@ -881,20 +688,6 @@ function assertSame($expected, $actual, string $message = ''): void
 }
 
 /**
- * Asserts that a variable and an attribute of an object have the same type
- * and value.
- *
- * @param object|string $actualClassOrObject
- *
- * @throws ExpectationFailedException
- * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
- */
-function assertAttributeSame($expected, string $actualAttributeName, $actualClassOrObject, string $message = ''): void
-{
-    Assert::assertAttributeSame(...\func_get_args());
-}
-
-/**
  * Asserts that two variables do not have the same type and value.
  * Used on objects, it asserts that two variables do not reference
  * the same object.
@@ -905,20 +698,6 @@ function assertAttributeSame($expected, string $actualAttributeName, $actualClas
 function assertNotSame($expected, $actual, string $message = ''): void
 {
     Assert::assertNotSame(...\func_get_args());
-}
-
-/**
- * Asserts that a variable and an attribute of an object do not have the
- * same type and value.
- *
- * @param object|string $actualClassOrObject
- *
- * @throws ExpectationFailedException
- * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
- */
-function assertAttributeNotSame($expected, string $actualAttributeName, $actualClassOrObject, string $message = ''): void
-{
-    Assert::assertAttributeNotSame(...\func_get_args());
 }
 
 /**
@@ -933,19 +712,6 @@ function assertInstanceOf(string $expected, $actual, string $message = ''): void
 }
 
 /**
- * Asserts that an attribute is of a given type.
- *
- * @param object|string $classOrObject
- *
- * @throws ExpectationFailedException
- * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
- */
-function assertAttributeInstanceOf(string $expected, string $attributeName, $classOrObject, string $message = ''): void
-{
-    Assert::assertAttributeInstanceOf(...\func_get_args());
-}
-
-/**
  * Asserts that a variable is not of a given type.
  *
  * @throws ExpectationFailedException
@@ -954,19 +720,6 @@ function assertAttributeInstanceOf(string $expected, string $attributeName, $cla
 function assertNotInstanceOf(string $expected, $actual, string $message = ''): void
 {
     Assert::assertNotInstanceOf(...\func_get_args());
-}
-
-/**
- * Asserts that an attribute is of a given type.
- *
- * @param object|string $classOrObject
- *
- * @throws ExpectationFailedException
- * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
- */
-function assertAttributeNotInstanceOf(string $expected, string $attributeName, $classOrObject, string $message = ''): void
-{
-    Assert::assertAttributeNotInstanceOf(...\func_get_args());
 }
 
 /**
@@ -981,19 +734,6 @@ function assertInternalType(string $expected, $actual, string $message = ''): vo
 }
 
 /**
- * Asserts that an attribute is of a given type.
- *
- * @param object|string $classOrObject
- *
- * @throws ExpectationFailedException
- * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
- */
-function assertAttributeInternalType(string $expected, string $attributeName, $classOrObject, string $message = ''): void
-{
-    Assert::assertAttributeInternalType(...\func_get_args());
-}
-
-/**
  * Asserts that a variable is not of a given type.
  *
  * @throws ExpectationFailedException
@@ -1002,19 +742,6 @@ function assertAttributeInternalType(string $expected, string $attributeName, $c
 function assertNotInternalType(string $expected, $actual, string $message = ''): void
 {
     Assert::assertNotInternalType(...\func_get_args());
-}
-
-/**
- * Asserts that an attribute is of a given type.
- *
- * @param object|string $classOrObject
- *
- * @throws ExpectationFailedException
- * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
- */
-function assertAttributeNotInternalType(string $expected, string $attributeName, $classOrObject, string $message = ''): void
-{
-    Assert::assertAttributeNotInternalType(...\func_get_args());
 }
 
 /**
@@ -1404,11 +1131,6 @@ function isNan(): IsNan
     return Assert::isNan();
 }
 
-function attribute(Constraint $constraint, string $attributeName): Attribute
-{
-    return Assert::attribute(...\func_get_args());
-}
-
 function contains($value, bool $checkForObjectIdentity = true, bool $checkForNonObjectIdentity = false): TraversableContains
 {
     return Assert::contains(...\func_get_args());
@@ -1432,11 +1154,6 @@ function arrayHasKey($key): ArrayHasKey
 function equalTo($value, float $delta = 0.0, int $maxDepth = 10, bool $canonicalize = false, bool $ignoreCase = false): IsEqual
 {
     return Assert::equalTo(...\func_get_args());
-}
-
-function attributeEqualTo(string $attributeName, $value, float $delta = 0.0, int $maxDepth = 10, bool $canonicalize = false, bool $ignoreCase = false): Attribute
-{
-    return Assert::attributeEqualTo(...\func_get_args());
 }
 
 function isEmpty(): IsEmpty
